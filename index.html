@@ -991,12 +991,7 @@
     width: 90%;
     padding: 2.5rem;
     margin: auto;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: scale(0.9);
     opacity: 0;
     transition: opacity 0.3s allow-discrete, transform 0.3s allow-discrete;
   }
@@ -1010,7 +1005,7 @@
 
   .modal[open] {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
   }
 
   .modal[open]::backdrop {
@@ -1020,7 +1015,7 @@
   @starting-style {
     .modal[open] {
       opacity: 0;
-      transform: translate(-50%, -50%) scale(0.9);
+      transform: scale(0.9);
     }
     .modal[open]::backdrop {
       opacity: 0;
@@ -1556,6 +1551,14 @@
 }
 
 @media (max-width: 600px) {
+  .modal {
+    padding: 1.5rem !important;
+    width: 95% !important;
+  }
+  .modal-header {
+    margin-block-end: 1rem !important;
+    padding-block-end: 0.75rem !important;
+  }
   .logo-text {
     font-size: 1.1rem;
   }
