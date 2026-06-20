@@ -765,9 +765,21 @@
   }
 
   .value-icon {
-    font-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-block-end: 1rem;
-    display: inline-block;
+  }
+
+  .value-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    transition: transform var(--transition-normal);
+  }
+
+  .value-card:hover .value-icon img {
+    transform: scale(1.15) rotate(5deg);
   }
 
   .value-title {
@@ -982,6 +994,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     transition: opacity 0.3s allow-discrete, transform 0.3s allow-discrete;
@@ -1595,6 +1609,73 @@
   }
 }
 
+
+  /* Cachebugs animated brand link */
+  .cachebugs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none !important;
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: linear-gradient(120deg, #ffab40, #ff5252, #4f86c6, #ffab40);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: cachebugsShine 4s linear infinite, cachebugsFloating 3s ease-in-out infinite alternate;
+  }
+  
+  .cachebugs-link::before {
+    content: '⚡';
+    font-size: 0.85rem;
+    -webkit-text-fill-color: initial;
+    animation: cachebugsSparkle 1.5s ease-in-out infinite;
+    display: inline-block;
+  }
+  
+  .cachebugs-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ffab40, #ff5252, #4f86c6);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+  
+  .cachebugs-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .cachebugs-link:hover {
+    transform: scale(1.1) translateY(-1px);
+    filter: drop-shadow(0 0 12px rgba(255, 82, 82, 0.8));
+  }
+
+  @keyframes cachebugsShine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  @keyframes cachebugsFloating {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-3px); }
+  }
+
+  @keyframes cachebugsSparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.3) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 4px #ffab40); }
+  }
+
 </style>
   
 </head>
@@ -1642,6 +1723,7 @@
               <a href="parent-info.html#dates" class="dropdown-link">Term Dates & Hours</a>
               <a href="parent-info.html#uniform" class="dropdown-link">School Uniform</a>
               <a href="parent-info.html#extend" class="dropdown-link">After School Care</a>
+              <a href="parent-info.html#fees" class="dropdown-link">Fee Policy & Withdrawals</a>
             </div>
           </li>
 
@@ -1812,59 +1894,86 @@
     </div>
   </section>
 
-  <!-- PROUD Values -->
+  <!-- Core Values -->
   <section class="section" id="values">
     <div class="section-container">
       <div class="section-header">
         <span class="section-tag">Our Philosophy</span>
-        <h2 class="section-title">We are PROUD</h2>
-        <p>Our values shape how we interact, play, and learn together. We encourage our young learners to develop these qualities every day.</p>
+        <h2 class="section-title">Our Core Values</h2>
+        <p>Derived from our commitment to early childhood growth, these fundamental values shape how we nurture, guide, and learn with every child.</p>
       </div>
 
       <div class="values-grid">
         
         <div class="value-card">
-          <div class="value-letter">P</div>
+          <div class="value-letter">C</div>
           <div class="value-content">
-            <span class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></span>
-            <h3 class="value-title">Polite</h3>
-            <p class="value-desc">Polite, well-mannered, kind, and respectful of friends, teachers, and surroundings.</p>
+            <span class="value-icon"><img src="assets/child_first_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-red);">Child First</h3>
+            <p class="value-desc">Every decision we make begins with what is best for the child.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-letter">C</div>
+          <div class="value-content">
+            <span class="value-icon"><img src="assets/curiosity_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-accent-green);">Curiosity</h3>
+            <p class="value-desc">We encourage children to ask questions, explore ideas, and discover the joy of learning.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-letter">C</div>
+          <div class="value-content">
+            <span class="value-icon"><img src="assets/creativity_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-accent-orange);">Creativity</h3>
+            <p class="value-desc">We celebrate imagination, innovation, and self-expression in all its forms.</p>
           </div>
         </div>
 
         <div class="value-card">
           <div class="value-letter">R</div>
           <div class="value-content">
-            <span class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-            <h3 class="value-title">Resilient</h3>
-            <p class="value-desc">Resilient and willing to try new challenges and learn cheerfully from mistakes.</p>
+            <span class="value-icon"><img src="assets/respect_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-accent-blue);">Respect</h3>
+            <p class="value-desc">We value every child, parent, teacher, and member of our community.</p>
           </div>
         </div>
 
         <div class="value-card">
-          <div class="value-letter">O</div>
+          <div class="value-letter">C</div>
           <div class="value-content">
-            <span class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A7.5 7.5 0 0 0 10.5 2 7.5 7.5 0 0 0 3 9.5c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg></span>
-            <h3 class="value-title">Open-Minded</h3>
-            <p class="value-desc">Open-minded to new thoughts, ideas, creative play, and new ways of working.</p>
+            <span class="value-icon"><img src="assets/confidence_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-red);">Confidence</h3>
+            <p class="value-desc">We help children develop self-belief, independence, and resilience.</p>
           </div>
         </div>
 
         <div class="value-card">
-          <div class="value-letter">U</div>
+          <div class="value-letter">K</div>
           <div class="value-content">
-            <span class="value-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color: var(--color-red); display:inline-block; vertical-align:middle; margin-top:-2px;" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-            <h3 class="value-title">Understanding</h3>
-            <p class="value-desc">Understanding, accepting, and caring of others and their differences.</p>
+            <span class="value-icon"><img src="assets/kindness_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-accent-green);">Kindness</h3>
+            <p class="value-desc">Empathy, compassion, and positive relationships are at the heart of everything we do.</p>
           </div>
         </div>
 
         <div class="value-card">
-          <div class="value-letter">D</div>
+          <div class="value-letter">C</div>
           <div class="value-content">
-            <span class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-            <h3 class="value-title">Determined</h3>
-            <p class="value-desc">Determined to try their best, complete tasks, and shine brightly in all activities.</p>
+            <span class="value-icon"><img src="assets/collaboration_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-accent-orange);">Collaboration</h3>
+            <p class="value-desc">We believe learning flourishes when families, educators, and children grow together.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-letter">L</div>
+          <div class="value-content">
+            <span class="value-icon"><img src="assets/learning_icon.png" alt="" class="value-icon-img"></span>
+            <h3 class="value-title" style="color: var(--color-accent-blue);">Lifelong Learning</h3>
+            <p class="value-desc">We inspire a love for learning that extends far beyond the classroom.</p>
           </div>
         </div>
 
@@ -1903,9 +2012,9 @@
           <img src="assets/playground.png" alt="School outdoor playground backdrop" class="mock-map">
           <div class="map-overlay">
             <h4>Mother's Pride Campus</h4>
-            <p>12 Primrose Lane, Richmond, London TW10 6UA</p>
-            <p class="mt-4"><strong>Phone:</strong> 020 8940 1234</p>
-            <p><strong>Email:</strong> info@motherspridepreschool.co.uk</p>
+            <p>16/74, Civil Lines, Kanpur, India</p>
+            <p class="mt-4"><strong>Phone:</strong> +91 9336685383</p>
+            <p><strong>Email:</strong> mothersprideknp@gmail.com</p>
           </div>
         </div>
 
@@ -2020,6 +2129,7 @@
           <li><a href="parent-info.html#dates">Term Dates</a></li>
           <li><a href="parent-info.html#uniform">Uniform Requirements</a></li>
           <li><a href="parent-info.html#extend">After School Care</a></li>
+          <li><a href="parent-info.html#fees">Fee Policy & Withdrawals</a></li>
           <li><a href="news.html">News & Calendar</a></li>
         </ul>
       </div>
@@ -2030,15 +2140,15 @@
         <ul class="footer-contact">
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span>12 Primrose Lane, Richmond, London TW10 6UA</span>
+            <span>16/74, Civil Lines, Kanpur, India</span>
           </li>
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <span>020 8940 1234</span>
+            <span>+91 9336685383</span>
           </li>
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <span>info@motherspridepreschool.co.uk</span>
+            <span>mothersprideknp@gmail.com</span>
           </li>
         </ul>
       </div>
@@ -2046,7 +2156,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Mother's Pride Pre School. All rights reserved.</p>
+      <p>&copy; 2026 Mother's Pride Pre School. All rights reserved. | Crafted by <a href="https://cachebugs.site" target="_blank" class="cachebugs-link">Cachebugs</a></p>
       <div class="footer-bottom-links">
         <a href="#">Terms of Use</a>
         <a href="#">Privacy Policy</a>

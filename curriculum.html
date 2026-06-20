@@ -982,6 +982,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     transition: opacity 0.3s allow-discrete, transform 0.3s allow-discrete;
@@ -1595,6 +1597,73 @@
   }
 }
 
+
+  /* Cachebugs animated brand link */
+  .cachebugs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none !important;
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: linear-gradient(120deg, #ffab40, #ff5252, #4f86c6, #ffab40);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: cachebugsShine 4s linear infinite, cachebugsFloating 3s ease-in-out infinite alternate;
+  }
+  
+  .cachebugs-link::before {
+    content: '⚡';
+    font-size: 0.85rem;
+    -webkit-text-fill-color: initial;
+    animation: cachebugsSparkle 1.5s ease-in-out infinite;
+    display: inline-block;
+  }
+  
+  .cachebugs-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ffab40, #ff5252, #4f86c6);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+  
+  .cachebugs-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .cachebugs-link:hover {
+    transform: scale(1.1) translateY(-1px);
+    filter: drop-shadow(0 0 12px rgba(255, 82, 82, 0.8));
+  }
+
+  @keyframes cachebugsShine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  @keyframes cachebugsFloating {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-3px); }
+  }
+
+  @keyframes cachebugsSparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.3) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 4px #ffab40); }
+  }
+
 </style>
   
 </head>
@@ -1642,6 +1711,7 @@
               <a href="parent-info.html#dates" class="dropdown-link">Term Dates & Hours</a>
               <a href="parent-info.html#uniform" class="dropdown-link">School Uniform</a>
               <a href="parent-info.html#extend" class="dropdown-link">After School Care</a>
+              <a href="parent-info.html#fees" class="dropdown-link">Fee Policy & Withdrawals</a>
             </div>
           </li>
 
@@ -1674,9 +1744,9 @@
       <div class="welcome-grid">
         <div class="welcome-text">
           <span class="section-tag">Learning Philosophy</span>
-          <h2 class="section-title">Play-Based Learning & EYFS</h2>
-          <p>At Mother's Pride, our curriculum is designed in alignment with the UK <strong>Early Years Foundation Stage (EYFS)</strong> framework, which sets standards for the learning, development, and care of children from birth to 5 years old.</p>
-          <p>We believe that play is the work of early childhood. Through structural play, guided games, and natural exploration, our children develop language, gross and fine motor skills, social habits, and logical thinking without the pressure of formal testing. We focus on seven key areas of learning, categorizing them into prime and specific areas.</p>
+          <h2 class="section-title">A Holistic Educational Experience</h2>
+          <p>Our curriculum blends the <strong>Montessori method</strong>, <strong>Reggio Emilia principles</strong>, and play-based learning to provide a holistic educational experience.</p>
+          <p>We believe that play is the work of early childhood. Through engaging thematic learning, hands-on activities like arts and sensory play, and interactive games, our children develop language, gross and fine motor skills, social habits, and logical thinking.</p>
         </div>
         <div class="welcome-image-container">
           <img src="assets/hero_2.png" alt="Children painting in school classroom" class="welcome-img">
@@ -1714,7 +1784,7 @@
             <h3 style="color: var(--color-secondary); margin-block-end: 1rem; font-size: 1.5rem;">Literacy, Phonics & Communication</h3>
             <p style="margin-block-end: 1.5rem;">Language development is critical in early years. We use structured phonics programs (Jolly Phonics) to help children learn letter sounds, blending, and basic word formations. This is combined with daily story sessions, library visits, vocabulary games, and puppet theatre to make reading highly exciting.</p>
             <h4 style="color: var(--color-primary); margin-block-end: 0.5rem;">Key Focus Areas:</h4>
-            <ul class="footer-links" style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
               <li>Speech and vocabulary expansion through sensory prompts.</li>
               <li>Letter sound recognition (Synthetic Phonics).</li>
               <li>Pre-writing skills (holding pencil, tracing letters, and fine motor grasp).</li>
@@ -1727,7 +1797,7 @@
             <h3 style="color: var(--color-secondary); margin-block-end: 1rem; font-size: 1.5rem;">Mathematics, Logic & Patterns</h3>
             <p style="margin-block-end: 1.5rem;">Mathematics for toddlers is about sorting, counting, and pattern recognition. We use blocks, beads, puzzles, and shapes to help children develop mathematical concepts hands-on, rather than writing digits. They learn to compare weights, identify shapes, and understand dimensions.</p>
             <h4 style="color: var(--color-primary); margin-block-end: 0.5rem;">Key Focus Areas:</h4>
-            <ul class="footer-links" style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
               <li>Counting up to 20 with concrete items (blocks, apples).</li>
               <li>Shape classification (circle, square, triangle, oval).</li>
               <li>Sorting objects by size, color, weight, and properties.</li>
@@ -1740,7 +1810,7 @@
             <h3 style="color: var(--color-secondary); margin-block-end: 1rem; font-size: 1.5rem;">Creative Arts, Crafts & Expression</h3>
             <p style="margin-block-end: 1.5rem;">Art is where our kids express their thoughts and feelings. Our dedicated art area is filled with paints, paper, clay, safety scissors, and waste materials. Children paint with fingers, brushes, and sponges, build models, and create collages, enhancing their sensory processing and hand-eye coordination.</p>
             <h4 style="color: var(--color-primary); margin-block-end: 0.5rem;">Key Focus Areas:</h4>
-            <ul class="footer-links" style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
               <li>Exploration of colors, textures, and media (clay, water, sand).</li>
               <li>Fine motor control through cutting, tearing, pasting, and modeling.</li>
               <li>Independent creative decision-making.</li>
@@ -1753,7 +1823,7 @@
             <h3 style="color: var(--color-secondary); margin-block-end: 1rem; font-size: 1.5rem;">Music, Dance & Dramatic Play</h3>
             <p style="margin-block-end: 1.5rem;">Rhythm and movement are natural to children. Through daily rhymes, instrument playing (xylophones, drums, triangles), group dances, and dramatic roleplay (doctors, chefs, astronauts), kids develop physical confidence, vocal variety, coordination, and team bonds.</p>
             <h4 style="color: var(--color-primary); margin-block-end: 0.5rem;">Key Focus Areas:</h4>
-            <ul class="footer-links" style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
               <li>Singing nursery rhymes and simple kids' songs.</li>
               <li>Understanding rhythm, beat, and pitch using percussion.</li>
               <li>Gross motor expression through creative dancing and movement.</li>
@@ -1766,7 +1836,7 @@
             <h3 style="color: var(--color-secondary); margin-block-end: 1rem; font-size: 1.5rem;">Physical Education & Outdoor Exploration</h3>
             <p style="margin-block-end: 1.5rem;">Physical health is essential for growing children. We use our large green playground for games that encourage running, jumping, balancing, climbing, and ball control. Outdoor exploration includes gardening, mud play, and mini-beast hunts, helping children learn about nature.</p>
             <h4 style="color: var(--color-primary); margin-block-end: 0.5rem;">Key Focus Areas:</h4>
-            <ul class="footer-links" style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
               <li>Gross motor coordination (climbing, slides, balance beams).</li>
               <li>Fine motor precision (planting seeds, catching tennis balls).</li>
               <li>Outdoor hygiene, nature admiration, and safety awareness.</li>
@@ -1779,7 +1849,7 @@
             <h3 style="color: var(--color-secondary); margin-block-end: 1rem; font-size: 1.5rem;">Life Skills & Personal Social Education</h3>
             <p style="margin-block-end: 1.5rem;">We prepare children for real life. This includes personal hygiene (washing hands, brushing teeth, toilet training transition), social table manners, organizing toys, resolving conflicts with dialogue, and understanding safety, emotional control, and personal boundaries.</p>
             <h4 style="color: var(--color-primary); margin-block-end: 0.5rem;">Key Focus Areas:</h4>
-            <ul class="footer-links" style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--color-text-muted);">
               <li>Self-care: washing hands, eating independently, dressing up.</li>
               <li>Tidying up play zones and respect for classroom material.</li>
               <li>Identifying and communicating emotions safely.</li>
@@ -1813,7 +1883,7 @@
 
         <div style="background-color: var(--color-green); padding: 2.5rem; border-radius: var(--radius-md); border-top: 4px solid var(--color-green-dark);">
           <h4 style="color: var(--color-green-dark); margin-block-end: 1rem; font-size: 1.25rem;">Our Inclusion Promise</h4>
-          <ul class="footer-links" style="display: flex; flex-direction: column; gap: 1rem; color: var(--color-text-dark);">
+          <ul style="display: flex; flex-direction: column; gap: 1rem; color: var(--color-text-dark); list-style: none; padding: 0;">
             <li><strong>✓ Tailored Classwork:</strong> Adapting tasks to match children's pacing.</li>
             <li><strong>✓ Sensory Playroom:</strong> Cozy, quiet playroom for emotional regulation.</li>
             <li><strong>✓ Speech & Language Support:</strong> Dedicated language games and prompts.</li>
@@ -1900,6 +1970,7 @@
           <li><a href="parent-info.html#dates">Term Dates</a></li>
           <li><a href="parent-info.html#uniform">Uniform Requirements</a></li>
           <li><a href="parent-info.html#extend">After School Care</a></li>
+          <li><a href="parent-info.html#fees">Fee Policy & Withdrawals</a></li>
           <li><a href="news.html">News & Calendar</a></li>
         </ul>
       </div>
@@ -1909,15 +1980,15 @@
         <ul class="footer-contact">
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span>12 Primrose Lane, Richmond, London TW10 6UA</span>
+            <span>16/74, Civil Lines, Kanpur, India</span>
           </li>
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <span>020 8940 1234</span>
+            <span>+91 9336685383</span>
           </li>
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <span>info@motherspridepreschool.co.uk</span>
+            <span>mothersprideknp@gmail.com</span>
           </li>
         </ul>
       </div>
@@ -1925,7 +1996,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Mother's Pride Pre School. All rights reserved.</p>
+      <p>&copy; 2026 Mother's Pride Pre School. All rights reserved. | Crafted by <a href="https://cachebugs.site" target="_blank" class="cachebugs-link">Cachebugs</a></p>
       <div class="footer-bottom-links">
         <a href="#">Terms of Use</a>
         <a href="#">Privacy Policy</a>

@@ -982,6 +982,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     transition: opacity 0.3s allow-discrete, transform 0.3s allow-discrete;
@@ -1595,6 +1597,73 @@
   }
 }
 
+
+  /* Cachebugs animated brand link */
+  .cachebugs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none !important;
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: linear-gradient(120deg, #ffab40, #ff5252, #4f86c6, #ffab40);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: cachebugsShine 4s linear infinite, cachebugsFloating 3s ease-in-out infinite alternate;
+  }
+  
+  .cachebugs-link::before {
+    content: '⚡';
+    font-size: 0.85rem;
+    -webkit-text-fill-color: initial;
+    animation: cachebugsSparkle 1.5s ease-in-out infinite;
+    display: inline-block;
+  }
+  
+  .cachebugs-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ffab40, #ff5252, #4f86c6);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+  
+  .cachebugs-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .cachebugs-link:hover {
+    transform: scale(1.1) translateY(-1px);
+    filter: drop-shadow(0 0 12px rgba(255, 82, 82, 0.8));
+  }
+
+  @keyframes cachebugsShine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  @keyframes cachebugsFloating {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-3px); }
+  }
+
+  @keyframes cachebugsSparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.3) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 4px #ffab40); }
+  }
+
 </style>
   
 </head>
@@ -1642,6 +1711,7 @@
               <a href="parent-info.html#dates" class="dropdown-link">Term Dates & Hours</a>
               <a href="parent-info.html#uniform" class="dropdown-link">School Uniform</a>
               <a href="parent-info.html#extend" class="dropdown-link">After School Care</a>
+              <a href="parent-info.html#fees" class="dropdown-link">Fee Policy & Withdrawals</a>
             </div>
           </li>
 
@@ -1677,8 +1747,8 @@
         </div>
         <div class="welcome-text">
           <span class="section-tag">About Us</span>
-          <h2 class="section-title">Nurturing Young Minds Since 2012</h2>
-          <p>Mother’s Pride Pre School was founded with a singular vision: to create a home-away-from-home where early education is synonym with joy, discovery, and safety. Over the past decade, we have established ourselves as one of the most loved preschools in Richmond, London, welcoming hundreds of children and helping them build active, healthy foundations for their schooling years.</p>
+          <h2 class="section-title">Nurturing Young Minds Since 2001</h2>
+          <p>Founded in 2001, Mother’s Pride Pre School has a rich history of nurturing young minds. Celebrating 25 years of excellence in early childhood education, our school has been a cornerstone of the Kanpur community, offering a safe, vibrant, and loving environment for children to grow and learn.</p>
           <p>We pride ourselves on our activity-based methodology, spacious outdoor play areas, and exceptionally loving teaching staff. We believe early childhood is a precious stage of development, and we honor it by focusing on learning with love, resilience, and inclusivity.</p>
         </div>
       </div>
@@ -1690,8 +1760,9 @@
     <div class="section-container">
       <div class="section-header">
         <span class="section-tag">Vision & Values</span>
-        <h2 class="section-title">Our Vision & PROUD Philosophy</h2>
-        <p>Our goal is to prepare children for their future roles in society by helping them achieve their personal, physical, and academic potential through shared values.</p>
+        <h2 class="section-title">Our Vision & Mission</h2>
+        <p><strong>Vision:</strong> To be a beacon of excellence in early childhood education, nurturing lifelong learners who are confident, compassionate, and creative.</p>
+        <p><strong>Mission:</strong> We provide a safe, stimulating, and inclusive environment where every child is empowered to explore, discover, and reach their full potential.</p>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-block-end: 4rem;">
@@ -1699,7 +1770,10 @@
           <h3 style="color: var(--color-primary); font-size: 1.5rem; margin-block-end: 1rem;">Learning With Love</h3>
           <p style="margin-block-end: 1.5rem;">Love is the cornerstone of our school. When young children feel secure, respected, and loved, they gain the confidence to take risks, ask questions, make mistakes, and learn enthusiastically. Our teachers create warm environments that support and encourage this positive mindset.</p>
           <h3 style="color: var(--color-secondary); font-size: 1.5rem; margin-block-end: 1rem;">Partnerships with Parents</h3>
-          <p>We believe that parents are a child's first and most important educators. We foster strong, transparent working relationships with parents and carers through regular briefings, online progress logs, parents' meets, and community events.</p>
+          <p style="margin-block-end: 1.5rem;">We believe that parents are a child's first and most important educators. We foster strong, transparent working relationships with parents and carers through regular briefings, online progress logs, parents' meets, and community events.</p>
+          
+          <h3 style="color: var(--color-primary); font-size: 1.5rem; margin-block-end: 1rem;">Seamless Transition to Primary School</h3>
+          <p>At Mother's Pride, our responsibility doesn't end at preschool. Through our trusted school partnerships, we help families make a smooth and confident transition to Grade 1. Preferred Admission Pathways are available with <strong>Dr. Virendra Swarup Public School, Cantt, Kanpur</strong> and <strong>Allenhouse Public School, Kanpur</strong>.</p>
         </div>
         <div>
           <img src="assets/classroom.png" alt="Preschool interior space" style="border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
@@ -1770,24 +1844,18 @@
           <div class="team-photo-container">
             <div style="background-color: var(--color-pink); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-secondary); display:block; margin:auto;" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           </div>
-          <h4 class="team-name">Mrs. Sarah Jenkins</h4>
-          <span class="team-role">Head Teacher / Founder</span>
+          <h4 class="team-name">Inderjit Ahluwalia</h4>
+          <span class="team-role">Managing Partner</span>
+          <p style="padding: 1rem; font-size: 0.85rem; color: var(--color-text-muted);">M.Com, Montessori Teaching Diploma (Maria Montessori). 25+ years experience in nurturing young minds.</p>
         </div>
 
         <div class="team-card">
           <div class="team-photo-container">
             <div style="background-color: var(--color-green); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-secondary); display:block; margin:auto;" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           </div>
-          <h4 class="team-name">Ms. Emily Thompson</h4>
-          <span class="team-role">Deputy Head / SENCO</span>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo-container">
-            <div style="background-color: var(--color-orange); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-secondary); display:block; margin:auto;" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          </div>
-          <h4 class="team-name">Mr. David Harrison</h4>
-          <span class="team-role">School Business Manager</span>
+          <h4 class="team-name">Mannat Ahluwalia</h4>
+          <span class="team-role">Managing Partner</span>
+          <p style="padding: 1rem; font-size: 0.85rem; color: var(--color-text-muted);">B.A. in International Affairs & Business, George Washington University. Reggio Emilia specialist.</p>
         </div>
 
       </div>
@@ -1853,7 +1921,7 @@
 
         <div>
           <h3 style="color: var(--color-secondary); margin-block-end: 1.5rem;">Important Documents & Downloads</h3>
-          <ul class="footer-links" style="display: flex; flex-direction: column; gap: 1rem;">
+          <ul style="display: flex; flex-direction: column; gap: 1rem; list-style: none; padding: 0;">
             <li style="background: white; padding: 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
               <span>Child Protection & Safeguarding Policy 2026</span>
               <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem; min-block-size: 30px;">Download PDF</a>
@@ -1961,6 +2029,7 @@
           <li><a href="parent-info.html#dates">Term Dates</a></li>
           <li><a href="parent-info.html#uniform">Uniform Requirements</a></li>
           <li><a href="parent-info.html#extend">After School Care</a></li>
+          <li><a href="parent-info.html#fees">Fee Policy & Withdrawals</a></li>
           <li><a href="news.html">News & Calendar</a></li>
         </ul>
       </div>
@@ -1970,15 +2039,15 @@
         <ul class="footer-contact">
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span>12 Primrose Lane, Richmond, London TW10 6UA</span>
+            <span>16/74, Civil Lines, Kanpur, India</span>
           </li>
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <span>020 8940 1234</span>
+            <span>+91 9336685383</span>
           </li>
           <li>
             <span class="footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" style="color:var(--color-accent-orange);margin-top:0.2rem;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <span>info@motherspridepreschool.co.uk</span>
+            <span>mothersprideknp@gmail.com</span>
           </li>
         </ul>
       </div>
@@ -1986,7 +2055,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Mother's Pride Pre School. All rights reserved.</p>
+      <p>&copy; 2026 Mother's Pride Pre School. All rights reserved. | Crafted by <a href="https://cachebugs.site" target="_blank" class="cachebugs-link">Cachebugs</a></p>
       <div class="footer-bottom-links">
         <a href="#">Terms of Use</a>
         <a href="#">Privacy Policy</a>
