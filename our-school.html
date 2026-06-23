@@ -2400,14 +2400,23 @@ function initFormValidation() {
       });
 
       if (isValid) {
-        // Mock successful form submission
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         submitBtn.innerText = 'Submitting...';
 
-        setTimeout(() => {
-          // Hide form contents, show success dialog
+        const formData = new FormData(form);
+
+        fetch('https://formsubmit.co/ajax/mothersprideknp@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(Object.fromEntries(formData))
+        })
+        .then(response => response.json())
+        .then(data => {
           const modal = form.closest('dialog');
           if (modal) {
             modal.close();
@@ -2418,7 +2427,12 @@ function initFormValidation() {
           form.reset();
           submitBtn.disabled = false;
           submitBtn.innerText = originalText;
-        }, 1500);
+        })
+        .catch(error => {
+          alert('Oops! Something went wrong. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.innerText = originalText;
+        });
       }
     });
   });
