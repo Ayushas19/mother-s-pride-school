@@ -252,15 +252,16 @@
     font-size: 1.25rem;
     color: var(--color-secondary);
     line-height: 1.1;
+    white-space: nowrap;
   }
 
   .logo-text span {
-    display: block;
-    font-size: 0.8rem;
+    display: inline;
+    font-size: 1.25rem;
     color: var(--color-primary);
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   /* Navigation Links */
@@ -1552,8 +1553,8 @@
   }
   
   .logo-text span {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
+    letter-spacing: 0;
   }
   
   .footer-grid {
@@ -1883,20 +1884,11 @@
 
       <!-- Senior Leadership -->
       <h3 style="color: var(--color-secondary); border-bottom: 2px solid rgba(18, 40, 76, 0.1); padding-bottom: 0.5rem; margin-block-end: 2rem;">Senior Leadership Team</h3>
-      <div class="team-grid" style="margin-block-end: 4rem;">
+      <div class="team-grid" style="margin-block-end: 4rem; display: flex; justify-content: center;">
         
-        <div class="team-card">
+        <div class="team-card" style="max-width: 320px; width: 100%;">
           <div class="team-photo-container">
-            <div style="background-color: var(--color-pink); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-secondary); display:block; margin:auto;" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          </div>
-          <h4 class="team-name">Inderjit Ahluwalia</h4>
-          <span class="team-role">Managing Partner</span>
-          <p style="padding: 1rem; font-size: 0.85rem; color: var(--color-text-muted);">M.Com, Montessori Teaching Diploma (Maria Montessori). 25+ years experience in nurturing young minds.</p>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo-container">
-            <div style="background-color: var(--color-green); width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-secondary); display:block; margin:auto;" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <img src="assets/mannat.jpeg" alt="Mannat Ahluwalia" class="team-photo">
           </div>
           <h4 class="team-name">Mannat Ahluwalia</h4>
           <span class="team-role">Managing Partner</span>
@@ -1917,7 +1909,7 @@
         <p>We maintain high regulatory standards. All school policies, safeguarding rules, and child safety documents are available below.</p>
       </div>
 
-      <div class="grid-2col-reverse">
+      <div style="max-width: 800px; margin: 0 auto;">
         <div>
           <h3 style="color: var(--color-secondary); margin-block-end: 1rem;">Safeguarding is Our Priority</h3>
           <p style="margin-block-end: 1.5rem;">Mother's Pride Pre School is fully committed to safeguarding and promoting the welfare of children. We expect all staff, volunteers, and parents to share this commitment. We have trained Designated Safeguarding Leads (DSLs) on site at all times, secure entry gates, and biometric visitor sign-ins.</p>
@@ -1925,28 +1917,6 @@
             <strong>Urgent Safety Concern?</strong><br>
             If you have any safety concerns regarding a child, please immediately contact our Safeguarding Lead, Mrs. Sarah Jenkins, at safeguarding@motherspridepreschool.co.uk.
           </div>
-        </div>
-
-        <div>
-          <h3 style="color: var(--color-secondary); margin-block-end: 1.5rem;">Important Documents & Downloads</h3>
-          <ul style="display: flex; flex-direction: column; gap: 1rem; list-style: none; padding: 0;">
-            <li style="background: white; padding: 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
-              <span>Child Protection & Safeguarding Policy 2026</span>
-              <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem; min-block-size: 30px;">Download PDF</a>
-            </li>
-            <li style="background: white; padding: 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
-              <span>Health, Safety & Medical Care Policy</span>
-              <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem; min-block-size: 30px;">Download PDF</a>
-            </li>
-            <li style="background: white; padding: 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
-              <span>Behavior & Positive Reinforcement Guidelines</span>
-              <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem; min-block-size: 30px;">Download PDF</a>
-            </li>
-            <li style="background: white; padding: 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
-              <span>Early Help Offer & SEND Local Offer</span>
-              <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem; min-block-size: 30px;">Download PDF</a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
